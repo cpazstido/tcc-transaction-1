@@ -20,4 +20,6 @@ public interface TransactionRepository {
     Transaction findByXid(TransactionXid xid);
 
     List<Transaction> findAllUnmodifiedSince(Date date);
+
+    String getTableName();
 }

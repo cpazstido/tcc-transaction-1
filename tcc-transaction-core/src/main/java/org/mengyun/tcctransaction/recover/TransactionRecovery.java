@@ -24,7 +24,8 @@ public class TransactionRecovery {
     private TransactionConfigurator transactionConfigurator;
 
     public void startRecover() {
-
+        TransactionRepository transactionRepository = transactionConfigurator.getTransactionRepository();
+        logger.info("==定时任务("+transactionRepository.getTableName()+")==");
         List<Transaction> transactions = loadErrorTransactions();
 
         recoverErrorTransactions(transactions);
@@ -64,7 +65,7 @@ public class TransactionRecovery {
                 transaction.addRetriedCount();
 
                 if (transaction.getStatus().equals(TransactionStatus.CONFIRMING)) {
-
+                    logger.info("定时任务==》confirming");
                     transaction.changeStatus(TransactionStatus.CONFIRMING);
                     transactionConfigurator.getTransactionRepository().update(transaction);
                     transaction.commit();
@@ -72,7 +73,7 @@ public class TransactionRecovery {
 
                 } else if (transaction.getStatus().equals(TransactionStatus.CANCELLING)
                         || transaction.getTransactionType().equals(TransactionType.ROOT)) {
-
+                    logger.info("定时任务==》cancelling");
                     transaction.changeStatus(TransactionStatus.CANCELLING);
                     transactionConfigurator.getTransactionRepository().update(transaction);
                     transaction.rollback();

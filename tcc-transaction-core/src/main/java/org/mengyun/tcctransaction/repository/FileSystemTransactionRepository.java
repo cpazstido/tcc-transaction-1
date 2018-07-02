@@ -195,4 +195,9 @@ public class FileSystemTransactionRepository extends CachableTransactionReposito
 
         return null;
     }
+
+    @Override
+    public String getTableName() {
+        return rootPath;
+    }
 }

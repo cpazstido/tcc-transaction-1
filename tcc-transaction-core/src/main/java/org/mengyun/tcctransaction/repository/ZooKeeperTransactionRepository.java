@@ -180,4 +180,8 @@ public class ZooKeeperTransactionRepository extends CachableTransactionRepositor
     }
 
 
+    @Override
+    public String getTableName() {
+        return zkRootPath;
+    }
 }

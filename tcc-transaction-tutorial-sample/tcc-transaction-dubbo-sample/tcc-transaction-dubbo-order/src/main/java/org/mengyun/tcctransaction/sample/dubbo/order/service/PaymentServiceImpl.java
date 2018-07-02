@@ -46,7 +46,7 @@ public class PaymentServiceImpl {
         }
 
         String result = capitalTradeOrderService.record(buildCapitalTradeOrderDto(order));
-        String result2 = redPacketTradeOrderService.record(buildRedPacketTradeOrderDto(order));
+//        String result2 = redPacketTradeOrderService.record(buildRedPacketTradeOrderDto(order));
     }
 
     public void confirmMakePayment(Order order, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {

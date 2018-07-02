@@ -209,4 +209,9 @@ public class RedisTransactionRepository extends CachableTransactionRepository {
             throw new TransactionIOException(e);
         }
     }
+
+    @Override
+    public String getTableName() {
+        return keyPrefix;
+    }
 }

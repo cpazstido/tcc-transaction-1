@@ -320,7 +320,7 @@ public class JdbcTransactionRepository extends CachableTransactionRepository {
         }
     }
 
-    private String getTableName() {
+    public String getTableName() {
         return StringUtils.isNotEmpty(tbSuffix) ? "TCC_TRANSACTION" + tbSuffix : "TCC_TRANSACTION";
     }
 }
